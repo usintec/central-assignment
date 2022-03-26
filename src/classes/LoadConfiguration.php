@@ -7,7 +7,7 @@ class LoadConfiguration {
         if ($handle) {
             while (($line = fgets($handle)) !== false) {
                 // process the line read.
-                putenv($line);
+                putenv(trim($line));
             }
             fclose($handle);
         } else {
