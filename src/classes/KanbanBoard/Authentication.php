@@ -60,19 +60,19 @@ class Login {
 			'state' => 'LKHYgbn776tgubkjhk',
 			'client_id' => $this->client_id,
 			'client_secret' => $this->client_secret);
+		$ret = http_build_query($data,'', '&');
+		$ret = str_replace(array('%0D%0A', '%0A%0D', '%0D','%0A'), '', $ret);
 		$options = array(
 			'http' => array(
 				'method' => 'POST',
 				'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-				'content' => http_build_query($data),
+				'content' => $ret,
 			),
 		);
 		$context = stream_context_create($options);
 		$result = file_get_contents($url, false, $context);
 		if ($result === FALSE)
 			die('Error');
-		$result = explode('=', explode('&', $result)[0]);
-		array_shift($result);
-		return array_shift($result);
+		return $result[1];
 	}
 }
