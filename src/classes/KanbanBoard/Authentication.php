@@ -71,6 +71,7 @@ class Login {
 		$result = file_get_contents($url, false, $context);
 		if ($result === FALSE)
 			die('Error');
+		$result = explode('=', explode('&', $result)[0]);
 		return $result[1];
 	}
 }

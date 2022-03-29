@@ -68,6 +68,7 @@ class Application {
 				'closed'			=> $ii['closed_at']
 			);
 		}
+		if($issues['active'] != null)
 		usort($issues['active'], function ($a, $b) {
 			return count($a['paused']) - count($b['paused']) === 0 ? strcmp($a['title'], $b['title']) : count($a['paused']) - count($b['paused']);
 		});
