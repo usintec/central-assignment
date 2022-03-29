@@ -8,6 +8,8 @@ require '../classes/KanbanBoard/Github.php';
 require '../classes/Utilities.php';
 require '../classes/KanbanBoard/Authentication.php';
 require '../classes/LoadConfiguration.php';
+require '../classes/BusinessLayer/Board.php';
+require '../classes/BusinessLayer/Issues.php';
 
 LoadConfiguration::addToEnv();
 $repositories = explode('|', Utilities::env('GH_REPOSITORIES'));
